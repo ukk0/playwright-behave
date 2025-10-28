@@ -6,6 +6,14 @@ Feature: Inventory functionality
   Background:
     Given I am on the inventory page
 
-    Scenario: Adding items to the shopping cart is correctly reflected
-      When I add two item to the cart
-      Then I should see two items indicated by tye shopping cart badge
+    Scenario: Every product listed should include a title, picture, description and a price
+      When I look at the page
+      Then I should see all products with a title, picture, description and a price
+
+    Scenario: Adding items to the shopping cart is correctly reflected in cart badge
+      When I add two items to the cart
+      Then I should see two items indicated by the shopping cart badge
+
+    Scenario: Removing items from the shopping cart is correctly reflected in cart badge
+      When I remove one of the items from cart
+      Then I should see the amount of cart items reduced to one
