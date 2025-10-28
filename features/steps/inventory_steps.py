@@ -15,10 +15,6 @@ def step_add_two_items_to_cart(context):
 def step_remove_item_from_cart(context):
     context.page_object.remove_items_from_cart(amount_of_items=1)
 
-@when("I open the shopping cart")
-def step_open_shopping_cart(context):
-    context.page_object.open_shopping_cart()
-
 @then("I should see all products with a title, picture, description and a price")
 def step_verify_product_contents(context):
     context.page_object.verify_inventory_item_contents()

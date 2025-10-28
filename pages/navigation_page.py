@@ -18,3 +18,6 @@ class NavigationPage:
 
     def close_side_menu(self):
         self.close_menu_button.click()
+
+    def verify_navigation(self, url: str):
+        expect(self.page).to_have_url(url)
