@@ -1,4 +1,5 @@
 from behave import given, when, then
+from utils.helpers import urls
 
 
 @given("I am on the login page")
@@ -27,7 +28,7 @@ def step_invalid_credentials(context):
 
 @when("I try to navigate to the inventory page without logging in")
 def step_try_to_navigate_to_inventory(context):
-    context.page.goto("https://www.saucedemo.com/inventory.html")
+    context.page.goto(urls["INVENTORY_PAGE"])
 
 @then("I should be redirected without any errors")
 def step_redirected_without_error(context):

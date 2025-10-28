@@ -1,7 +1,7 @@
 from playwright.sync_api import Page, expect
+from utils.helpers import urls
 
 
-PAGE_URL = "https://www.saucedemo.com/"
 USERNAME_SUCCESS = "standard_user"
 USERNAME_LOCKED = "locked_out_user"
 PASSWORD_SUCCESS = "secret_sauce"
@@ -16,7 +16,7 @@ class LoginPage:
         self.login_error_message = page.get_by_test_id("error")
 
     def navigate_to_login_page(self):
-        self.page.goto(PAGE_URL)
+        self.page.goto(urls["LOGIN_PAGE"])
 
     def enter_credentials_and_try_login(self, username: str = None, password: str = None):
         if username:
@@ -55,4 +55,4 @@ class LoginPage:
 
     def redirected_to_inventory_without_error(self):
         expect(self.login_error_message).not_to_be_visible()
-        expect(self.page).to_have_url(PAGE_URL + "inventory.html")
+        expect(self.page).to_have_url(urls["INVENTORY_PAGE"])

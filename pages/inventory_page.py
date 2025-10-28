@@ -1,7 +1,6 @@
 from playwright.sync_api import Page, expect
+from utils.helpers import urls
 
-
-PAGE_URL = "https://www.saucedemo.com/inventory.html"
 
 class InventoryPage:
     def __init__(self, page: Page):
@@ -23,7 +22,7 @@ class InventoryPage:
         self.shopping_cart_badge = page.get_by_test_id("shopping-cart-link")
 
     def navigate_to_inventory_page(self):
-        self.page.goto(PAGE_URL)
+        self.page.goto(urls["INVENTORY_PAGE"])
         expect(self.page_subtitle).to_have_text("Products")
 
     def open_shopping_cart(self):

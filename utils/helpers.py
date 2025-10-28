@@ -1,12 +1,17 @@
+urls = {
+    "ABOUT_PAGE": "https://saucelabs.com/",
+    "LOGIN_PAGE": "https://www.saucedemo.com/",
+    "INVENTORY_PAGE": "https://www.saucedemo.com/inventory.html",
+    "CART_PAGE": "https://www.saucedemo.com/cart.html",
+}
+
 def login_cookie():
-    cookie = {
+    return {
         "name": "session-username",
         "value": "standard_user",
         "domain": "www.saucedemo.com",
         "path": "/",
     }
-    return cookie
 
 def fill_cart_script():
-    init_script = "localStorage.setItem('cart-contents', '[0, 1, 2, 3, 4, 5]')"
-    return init_script
+    return "localStorage.setItem('cart-contents', '[0, 1, 2, 3, 4, 5]')"
