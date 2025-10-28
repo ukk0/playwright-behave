@@ -3,7 +3,7 @@ from utils.helpers import login_cookie
 
 
 @given("I am on the inventory page")
-def step_open_inventor_page(context):
+def step_open_inventory_page(context):
     context.page.context.add_cookies([login_cookie()])
     context.page_object.navigate_to_inventory_page()
 
