@@ -1,5 +1,3 @@
-import time
-
 from playwright.sync_api import Page, expect
 
 
@@ -10,14 +8,6 @@ class InventoryPage:
         self.page = page
 
         self.page_subtitle = page.get_by_test_id("title")
-        self.hamburger_menu = page.get_by_role("button", name="Open Menu")
-        self.side_menu_wrapper = page.locator("[class='bm-menu-wrap']")
-        self.menu_all_items_button = page.get_by_role(role="link", name="All Items")
-        self.menu_about_button = page.get_by_role(role="link", name="About")
-        self.menu_logout_button = page.get_by_role(role="link", name="Logout")
-        self.menu_reset_app_button = page.get_by_role(role="link", name="Reset App State")
-        self.close_menu_button = page.get_by_role(role="button", name="Close Menu")
-
         self.inventory_item = page.get_by_test_id("inventory-item")
         self.inventory_item_title = page.get_by_test_id("inventory-item-name")
         self.inventory_item_desc = page.get_by_test_id("inventory-item-desc")
@@ -30,16 +20,15 @@ class InventoryPage:
         self.add_item_to_cart = page.get_by_text(text="Add to cart")
         self.remove_item_from_cart = page.get_by_text(text="Remove")
         self.shopping_cart_items = page.locator("[class='shopping_cart_link'] [class='shopping_cart_badge']")
+        self.shopping_cart_badge = page.get_by_test_id("shopping-cart-link")
 
     def navigate_to_inventory_page(self):
         self.page.goto(PAGE_URL)
         expect(self.page_subtitle).to_have_text("Products")
 
-    def open_side_menu(self):
-        self.hamburger_menu.click()
-
-    def close_side_menu(self):
-        self.close_menu_button.click()
+    def open_shopping_cart(self):
+        self.shopping_cart_badge.click()
+        expect(self.page_subtitle).to_have_text("Your Cart")
 
     def verify_inventory_item_contents(self):
         item_count = self.inventory_item.count()
