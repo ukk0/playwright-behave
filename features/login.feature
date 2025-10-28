@@ -25,3 +25,7 @@ Feature: Login functionality
     Scenario: Login fails with wrong password
       When I enter a valid username and an incorrect password and click 'Login'
       Then I should see an error message about invalid credentials
+
+    Scenario: Login is required to enter the application
+      When I try to navigate to the inventory page without logging in
+      Then I should see an error message about required login

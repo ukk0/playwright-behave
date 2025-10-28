@@ -25,6 +25,10 @@ def step_missing_password(context):
 def step_invalid_credentials(context):
     context.page_object.login_error_wrong_password()
 
+@when("I try to navigate to the inventory page without logging in")
+def step_try_to_navigate_to_inventory(context):
+    context.page.goto("https://www.saucedemo.com/inventory.html")
+
 @then("I should be redirected without any errors")
 def step_redirected_without_error(context):
     context.page_object.redirected_to_inventory_without_error()
@@ -51,4 +55,10 @@ def step_missing_password_error(context):
 def step_invalid_credentials_error(context):
     context.page_object.expect_login_error_with_text(
         "Epic sadface: Username and password do not match any user in this service"
+    )
+
+@then("I should see an error message about required login")
+def step_login_required_error(context):
+    context.page_object.expect_login_error_with_text(
+        "Epic sadface: You can only access '/inventory.html' when you are logged in."
     )
