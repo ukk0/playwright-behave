@@ -18,18 +18,18 @@ Feature: Inventory functionality
       When I remove one of the items from cart
       Then I should see the amount of cart items reduced to one
 
-    Scenario:
+    Scenario: Products can be reverse-sorted by name
       When I sort the products by 'Name (Z to A)'
       Then The products should be reverse sorted by names
 
-    Scenario:
+    Scenario: Products can be sorted by name
       When I sort the products by 'Name (A to Z)'
       Then The products should be sorted by names
 
-    Scenario:
+    Scenario: Products can be sorted by price
       When I sort the products by 'Price (low to high)'
       Then The products should be sorted by prices
 
-    Scenario:
+    Scenario: Products can be reverse-sorted by price
       When I sort the products by 'Price (high to low)'
       Then The products should be reverse sorted by prices
