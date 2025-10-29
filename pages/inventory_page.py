@@ -1,12 +1,11 @@
 from playwright.sync_api import Page, expect
-from utils.helpers import urls
+from pages.generic_page import BasePage
 
 
-class InventoryPage:
+class InventoryPage(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
 
-        self.page_subtitle = page.get_by_test_id("title")
         self.inventory_item = page.get_by_test_id("inventory-item")
         self.inventory_item_title = page.get_by_test_id("inventory-item-name")
         self.inventory_item_desc = page.get_by_test_id("inventory-item-desc")
@@ -20,10 +19,6 @@ class InventoryPage:
         self.remove_item_from_cart = page.get_by_text(text="Remove")
         self.shopping_cart_items = page.locator("[class='shopping_cart_link'] [class='shopping_cart_badge']")
         self.shopping_cart_badge = page.get_by_test_id("shopping-cart-link")
-
-    def navigate_to_inventory_page(self):
-        self.page.goto(urls["INVENTORY_PAGE"])
-        expect(self.page_subtitle).to_have_text("Products")
 
     def open_shopping_cart(self):
         self.shopping_cart_badge.click()

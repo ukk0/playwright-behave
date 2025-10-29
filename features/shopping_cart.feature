@@ -1,5 +1,5 @@
 Feature: Shopping cart functionality
-  As a user
+  As a user on the shopping cart page
   I want to
   So that I can
 

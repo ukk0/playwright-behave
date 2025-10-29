@@ -1,10 +1,10 @@
 from behave import given, when, then
-from utils.helpers import urls
+from utils.helpers import URLS
 
 
 @given("I am on the login page")
 def step_open_login_page(context):
-    context.page_object.navigate_to_login_page()
+    context.page_object.navigate_to_page(URLS["LOGIN_PAGE"])
 
 @when("I enter valid credentials and click 'Login'")
 def step_enter_valid_credentials(context):
@@ -28,7 +28,7 @@ def step_invalid_credentials(context):
 
 @when("I try to navigate to the inventory page without logging in")
 def step_try_to_navigate_to_inventory(context):
-    context.page.goto(urls["INVENTORY_PAGE"])
+    context.page_object.navigate_to_page(URLS["INVENTORY_PAGE"])
 
 @then("I should be redirected without any errors")
 def step_redirected_without_error(context):

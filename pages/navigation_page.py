@@ -1,12 +1,12 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
+from pages.generic_page import BasePage
 
 
-class NavigationPage:
+class NavigationPage(BasePage):
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
 
         self.hamburger_menu = page.get_by_role("button", name="Open Menu")
-        self.side_menu_wrapper = page.locator("[class='bm-menu-wrap']")
         self.menu_all_items_button = page.get_by_role(role="link", name="All Items")
         self.menu_about_button = page.get_by_role(role="link", name="About")
         self.menu_logout_button = page.get_by_role(role="link", name="Logout")
@@ -18,6 +18,3 @@ class NavigationPage:
 
     def close_side_menu(self):
         self.close_menu_button.click()
-
-    def verify_navigation(self, url: str):
-        expect(self.page).to_have_url(url)

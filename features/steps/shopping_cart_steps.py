@@ -1,18 +1,25 @@
 from behave import given, when, then
-from utils.helpers import login_cookie, fill_cart_script, urls
+from utils.helpers import login_cookie, fill_cart_script, URLS
 
 
 @given("I'm authenticated and in pre-filled shopping cart page")
 def step_authenticate_and_prefill_cart(context):
-    pass
+    context.page.context.add_cookies([login_cookie()])
+    context.page.context.add_init_script(script=fill_cart_script())
+    context.page_object.navigate_to_page(URLS["CART_PAGE"], title="Your Cart")
 
 @when("I click the button 'Continue shopping'")
 def step_click_continue_shopping(context):
-    pass
+    context.page_object.return_to_shop_page()
+    context.page_object.current_page_should_be(
+        URLS["INVENTORY_PAGE"], title="Products")
 
 @when("I click the button 'Checkout'")
 def step_click_checkout(context):
-    pass
+    context.page_object.proceed_to_checkout_page()
+    context.page_object.current_page_should_be(
+        URLS["CHECKOUT_PAGE1"], title="Checkout: Your Information"
+    )
 
 @when("I click 'Remove' on a cart item")
 def step_click_remove_item(context):
