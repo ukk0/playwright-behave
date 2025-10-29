@@ -16,4 +16,4 @@ Feature: Shopping cart functionality
 
     Scenario: Items can be removed from shopping cart one by one
       When I click 'Remove' on a cart item
-      Then The item should be removed and the amount of items in cart is reduced
+      Then The item should be removed and the amount of items in cart reduced

@@ -11,28 +11,26 @@ def step_authenticate_and_prefill_cart(context):
 @when("I click the button 'Continue shopping'")
 def step_click_continue_shopping(context):
     context.page_object.return_to_shop_page()
-    context.page_object.current_page_should_be(
-        URLS["INVENTORY_PAGE"], title="Products")
 
 @when("I click the button 'Checkout'")
 def step_click_checkout(context):
     context.page_object.proceed_to_checkout_page()
+
+@when("I click 'Remove' on a cart item")
+def step_click_remove_item(context):
+    context.page_object.remove_first_item_from_cart()
+
+@then("I should be redirected back to the shop")
+def step_redirect_back_to_shop(context):
+    context.page_object.current_page_should_be(
+        URLS["INVENTORY_PAGE"], title="Products")
+
+@then("I should be redirected to first step of the checkout")
+def step_redirect_to_checkout(context):
     context.page_object.current_page_should_be(
         URLS["CHECKOUT_PAGE1"], title="Checkout: Your Information"
     )
 
-@when("I click 'Remove' on a cart item")
-def step_click_remove_item(context):
-    pass
-
-@then("I should be redirected back to the shop")
-def step_redirect_back_to_shop(context):
-    pass
-
-@then("I should be redirected to first step of the checkout")
-def step_redirect_to_checkout(context):
-    pass
-
-@then("The item should be removed and the amount of items in cart is reduced")
+@then("The item should be removed and the amount of items in cart reduced")
 def step_item_is_removed_and_count_reduced(context):
-    pass
+    assert context.page_object.get_cart_item_count() == 5
