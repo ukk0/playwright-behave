@@ -1,5 +1,5 @@
 from playwright.sync_api import Page, expect
-from pages.generic_page import BasePage
+from pages.base_page import BasePage
 from utils.helpers import URLS, LOGIN
 
 
