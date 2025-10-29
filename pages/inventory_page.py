@@ -13,7 +13,7 @@ class InventoryPage:
         self.inventory_item_price = page.get_by_test_id("inventory-item-price")
         self.inventory_item_pict = page.locator("[class='inventory_item_img']")
 
-        self.inventory_filter = page.get_by_test_id("product_sort_container")
+        self.inventory_filter = page.get_by_test_id("product-sort-container")
         self.inventory_item_names = page.locator("[class='inventory_list'] [class='inventory_item_name']")
         self.inventory_item_prices = page.locator("[class='inventory_list'] [class='inventory_item_price']")
         self.add_item_to_cart = page.get_by_text(text="Add to cart")
@@ -53,3 +53,13 @@ class InventoryPage:
     def cart_item_count(self):
         item_count = self.shopping_cart_items.inner_text()
         return int(item_count)
+
+    def verify_items_are_ordered_by_name(self, reverse: bool):
+        items = self.inventory_item_names.all_inner_texts()
+        assert items == sorted(items, reverse=reverse)
+
+    def verify_items_are_ordered_by_price(self, reverse: bool):
+        items = [
+            float(x[1:]) for x in self.inventory_item_prices.all_inner_texts()
+        ]
+        assert items == sorted(items, reverse=reverse)
