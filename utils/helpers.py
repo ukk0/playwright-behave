@@ -3,7 +3,8 @@ URLS = {
     "LOGIN_PAGE": "https://www.saucedemo.com/",
     "INVENTORY_PAGE": "https://www.saucedemo.com/inventory.html",
     "CART_PAGE": "https://www.saucedemo.com/cart.html",
-    "CHECKOUT_PAGE1": "https://www.saucedemo.com/checkout-step-one.html"
+    "CHECKOUT_PAGE1": "https://www.saucedemo.com/checkout-step-one.html",
+    "CHECKOUT_PAGE2": "https://www.saucedemo.com/checkout-step-two.html"
 }
 
 LOGIN = {
@@ -20,6 +21,9 @@ def login_cookie():
         "domain": "www.saucedemo.com",
         "path": "/",
     }
+
+def empty_cart_script():
+    return "localStorage.setItem('cart-contents', '[]')"
 
 def fill_cart_script():
     return "localStorage.setItem('cart-contents', '[0, 1, 2, 3, 4, 5]')"
