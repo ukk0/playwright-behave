@@ -15,7 +15,8 @@ Feature: Inventory functionality
       Then I should see two items indicated by the shopping cart badge
 
     Scenario: Removing items from the shopping cart is correctly reflected in cart badge
-      When I remove one of the items from cart
+      When I add two items to the cart
+      And I remove one of the items from cart
       Then I should see the amount of cart items reduced to one
 
     Scenario: Products can be reverse-sorted by name

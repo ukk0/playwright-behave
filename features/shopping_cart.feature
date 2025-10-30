@@ -1,7 +1,7 @@
 Feature: Shopping cart functionality
   As a user on the shopping cart page
-  I want to
-  So that I can
+  I want to be able to interact with my shopping cart and go back to shop or move forward
+  So that I can correctly manage my shopping cart before checkout
 
   Background:
     Given I'm authenticated and in pre-filled shopping cart page

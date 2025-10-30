@@ -1,10 +1,11 @@
 from behave import given, when, then
-from utils.helpers import login_cookie, URLS
+from utils.helpers import login_cookie, URLS, empty_cart_script
 
 
 @given("I am on the inventory page")
 def step_open_inventory_page(context):
     context.page.context.add_cookies([login_cookie()])
+    context.page.context.add_init_script(script=empty_cart_script())
     context.page_object.navigate_to_page(URLS["INVENTORY_PAGE"], title="Products")
 
 @when("I add two items to the cart")
