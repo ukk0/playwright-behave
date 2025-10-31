@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 
+
 class BrowserFactory:
     def __init__(self, headless: bool = True):
         self.headless = headless

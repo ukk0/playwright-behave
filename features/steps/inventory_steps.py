@@ -6,7 +6,7 @@ from utils.helpers import login_cookie, URLS, empty_cart_script
 def step_open_inventory_page(context):
     context.page.context.add_cookies([login_cookie()])
     context.page.context.add_init_script(script=empty_cart_script())
-    context.page_object.navigate_to_page(URLS["INVENTORY_PAGE"], title="Products")
+    context.page_object.navigate_to_page(url=URLS["INVENTORY_PAGE"], title="Products")
 
 @when("I add two items to the cart")
 def step_add_two_items_to_cart(context):
@@ -18,19 +18,19 @@ def step_remove_item_from_cart(context):
 
 @when("I sort the products by 'Name (Z to A)'")
 def step_sort_by_name_reverse(context):
-    context.page_object.use_inventory_filter("Name (Z to A)")
+    context.page_object.use_inventory_filter(filter_option="Name (Z to A)")
 
 @when("I sort the products by 'Name (A to Z)'")
 def step_sort_by_name(context):
-    context.page_object.use_inventory_filter("Name (A to Z)")
+    context.page_object.use_inventory_filter(filter_option="Name (A to Z)")
 
 @when("I sort the products by 'Price (low to high)'")
 def step_sort_by_price(context):
-    context.page_object.use_inventory_filter("Price (low to high)")
+    context.page_object.use_inventory_filter(filter_option="Price (low to high)")
 
 @when("I sort the products by 'Price (high to low)'")
 def step_sort_by_price_reverse(context):
-    context.page_object.use_inventory_filter("Price (high to low)")
+    context.page_object.use_inventory_filter(filter_option="Price (high to low)")
 
 @then("I should see all products with a title, picture, description and a price")
 def step_verify_product_contents(context):

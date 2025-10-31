@@ -6,7 +6,7 @@ from utils.helpers import login_cookie, fill_cart_script, URLS
 def step_authenticate_and_prefill_cart(context):
     context.page.context.add_cookies([login_cookie()])
     context.page.context.add_init_script(script=fill_cart_script())
-    context.page_object.navigate_to_page(URLS["CART_PAGE"], title="Your Cart")
+    context.page_object.navigate_to_page(url=URLS["CART_PAGE"], title="Your Cart")
 
 @when("I click the button 'Continue shopping'")
 def step_click_continue_shopping(context):
@@ -23,12 +23,12 @@ def step_click_remove_item(context):
 @then("I should be redirected back to the shop")
 def step_redirect_back_to_shop(context):
     context.page_object.current_page_should_be(
-        URLS["INVENTORY_PAGE"], title="Products")
+        expected_url=URLS["INVENTORY_PAGE"], title="Products")
 
 @then("I should be redirected to first step of the checkout")
 def step_redirect_to_checkout(context):
     context.page_object.current_page_should_be(
-        URLS["CHECKOUT_PAGE1"], title="Checkout: Your Information"
+        expected_url=URLS["CHECKOUT_PAGE1"], title="Checkout: Your Information"
     )
 
 @then("The item should be removed and the amount of items in cart reduced")

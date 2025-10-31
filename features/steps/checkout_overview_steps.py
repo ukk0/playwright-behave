@@ -6,7 +6,7 @@ def step_final_checkout(context):
     context.page.context.add_cookies([login_cookie()])
     context.page.context.add_init_script(script=fill_cart_script())
     context.page_object.navigate_to_page(
-        URLS["CHECKOUT_PAGE2"], title="Checkout: Overview"
+        url=URLS["CHECKOUT_PAGE2"], title="Checkout: Overview"
     )
 
 @when("I click 'Cancel'")

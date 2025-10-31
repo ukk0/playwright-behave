@@ -33,12 +33,18 @@ def step_close_menu(context):
 
 @then("I should be redirected to the inventory page")
 def step_redirect_to_inventory(context):
-    context.page_object.current_page_should_be(URLS["INVENTORY_PAGE"])
+    context.page_object.current_page_should_be(
+        expected_url=URLS["INVENTORY_PAGE"]
+    )
 
 @then("I should be redirected to the SauceLabs 'About' page")
 def step_redirect_to_about_page(context):
-    context.page_object.current_page_should_be(URLS["ABOUT_PAGE"])
+    context.page_object.current_page_should_be(
+        expected_url=URLS["ABOUT_PAGE"]
+    )
 
 @then("I should be redirected to the login page")
 def step_redirect_to_login_page(context):
-    context.page_object.current_page_should_be(URLS["LOGIN_PAGE"])
+    context.page_object.current_page_should_be(
+        expected_url=URLS["LOGIN_PAGE"]
+    )
