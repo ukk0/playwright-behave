@@ -10,14 +10,14 @@ class CheckoutPage(BasePage):
         self.input_last_name = page.get_by_placeholder(text="Last Name")
         self.input_zip_code = page.get_by_placeholder(text="Zip/Postal Code")
         self.error_missing_info = page.get_by_test_id("error")
-
         self.checkout_item_price = page.locator("[class='cart_item'] [class='inventory_item_price']")
-        self.summary_subtotal_label = page.locator("[class='summary_subtotal_label']")
-        self.summary_tax_label = page.locator("[class='summary_tax_label']")
-        self.summary_total_label = page.locator("[class='summary_info_label summary_total_label']")
+        self.summary_subtotal_label = page.get_by_test_id("subtotal-label")
+        self.summary_tax_label = page.get_by_test_id("tax-label")
+        self.summary_total_label = page.get_by_test_id("total-label")
         self.finish_payment_button = page.get_by_test_id("finish")
-        self.thank_you_page = page.get_by_role(role="heading", name="Thank you for your order!")
+        self.thank_you_heading = page.get_by_role(role="heading", name="Thank you for your order!")
         self.return_to_shop_button = page.get_by_test_id("back-to-products")
+        self.cancel_checkout_button = page.get_by_test_id("cancel")
 
     def fill_first_name(self, first_name: str):
         self.input_first_name.fill(first_name)
@@ -47,3 +47,16 @@ class CheckoutPage(BasePage):
 
     def return_to_shop(self):
         self.return_to_shop_button.click()
+
+    def cancel_checkout(self):
+        self.cancel_checkout_button.click()
+
+    def validate_order_price_details(self):
+        sum_of_item_prices = sum([
+            float(price[1:]) for price in self.checkout_item_price.all_inner_texts()
+        ])
+        subtotal = float(self.summary_subtotal_label.inner_text().split("$")[1])
+        tax = float(self.summary_tax_label.inner_text().split("$")[1])
+        total = float(self.summary_total_label.inner_text().split("$")[1])
+        assert sum_of_item_prices == subtotal
+        assert subtotal + tax == total
