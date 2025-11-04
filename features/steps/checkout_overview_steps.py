@@ -1,6 +1,7 @@
 from behave import given, when, then
 from utils.helpers import login_cookie, fill_cart_script, URLS
 
+
 @given("I'm authenticated and on the final checkout overview")
 def step_final_checkout(context):
     context.page.context.add_cookies([login_cookie()])
