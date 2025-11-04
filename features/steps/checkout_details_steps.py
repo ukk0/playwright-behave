@@ -9,6 +9,10 @@ def step_ready_to_checkout(context):
         url=URLS["CHECKOUT_PAGE1"], title="Checkout: Your Information"
     )
 
+@when("I click 'Cancel' at details page")
+def step_cancel_checkout(context):
+    context.page_object.cancel_checkout()
+
 @when("I try to proceed without providing a first name")
 def step_proceed_without_fn(context):
     context.page_object.proceed_to_final_checkout()
@@ -30,6 +34,12 @@ def step_proceed_with_all_info(context):
         first_name="Testy",
         last_name="McTester",
         zip_code="123456"
+    )
+
+@then("I should be redirected back to the shopping cart")
+def step_redirect_back_to_cart(context):
+    context.page_object.current_page_should_be(
+        expected_url=URLS["CART_PAGE"], title="Your Cart"
     )
 
 @then("I should see an error about missing first name")

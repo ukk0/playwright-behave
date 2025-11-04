@@ -9,7 +9,7 @@ def step_final_checkout(context):
         url=URLS["CHECKOUT_PAGE2"], title="Checkout: Overview"
     )
 
-@when("I click 'Cancel'")
+@when("I click 'Cancel' in overview")
 def step_click_cancel(context):
     context.page_object.cancel_checkout()
 

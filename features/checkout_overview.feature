@@ -11,7 +11,7 @@ Feature: Checkout overview functionality
       Then The page should contain correct price details
 
     Scenario: Clicking 'Cancel' should bring user back to the inventory page
-      When I click 'Cancel'
+      When I click 'Cancel' in overview
       Then I should be redirected to the inventory page
 
     Scenario: Clicking 'Finish' should successfully finalize the order

@@ -6,6 +6,10 @@ Feature: Checkout details functionality
   Background:
     Given I'm authenticated and ready to checkout
 
+    Scenario: Checkout can be canceled at details page
+      When I click 'Cancel' at details page
+      Then I should be redirected back to the shopping cart
+
     Scenario: Form cannot be submitted without providing a first name
       When I try to proceed without providing a first name
       Then I should see an error about missing first name
