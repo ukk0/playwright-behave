@@ -36,17 +36,26 @@ def step_choose_logout(context):
 
 @when("I click on the 'X' button in footer")
 def step_navigate_to_x(context):
-    context.page_object.link_button_x.click()
+    """
+    Syntax sugar, we need to combine the clicking and expectation
+    in the method used for related 'Then'.
+    """
 
 
 @when("I click on the 'Facebook' button in footer")
 def step_navigate_to_fb(context):
-    context.page_object.link_button_fb.click()
+    """
+    Syntax sugar, we need to combine the clicking and expectation
+    in the method used for related 'Then'.
+    """
 
 
 @when("I click on the 'LinkedIn' button in footer")
 def step_navigate_to_li(context):
-    context.page_object.link_button_li.click()
+    """
+    Syntax sugar, we need to combine the clicking and expectation
+    in the method used for related 'Then'.
+    """
 
 
 @then("I can close the menu")
