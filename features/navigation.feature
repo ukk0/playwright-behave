@@ -25,3 +25,15 @@ Feature: Navigation functionality
       When I open the side navigation menu
       And I choose the option 'Logout'
       Then I should be redirected to the login page
+
+    Scenario: User can navigate from footer buttons to X
+      When I click on the 'X' button in footer
+      Then I should be redirected to SauceLabs X page
+
+    Scenario: User can navigate from footer buttons to Facebook
+      When I click on the 'Facebook' button in footer
+      Then I should be redirected to SauceLabs Facebook page
+
+    Scenario: User can navigate from footer buttons to LinkedIn
+      When I click on the 'LinkedIn' button in footer
+      Then I should be redirected to SauceLabs LinkedIn page

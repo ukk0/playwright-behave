@@ -27,6 +27,18 @@ def step_choose_about(context):
 def step_choose_logout(context):
     context.page_object.menu_logout_button.click()
 
+@when("I click on the 'X' button in footer")
+def step_navigate_to_x(context):
+    context.page_object.link_button_x.click()
+
+@when("I click on the 'Facebook' button in footer")
+def step_navigate_to_fb(context):
+    context.page_object.link_button_fb.click()
+
+@when("I click on the 'LinkedIn' button in footer")
+def step_navigate_to_li(context):
+    context.page_object.link_button_li.click()
+
 @then("I can close the menu")
 def step_close_menu(context):
     context.page_object.close_side_menu()
@@ -47,4 +59,25 @@ def step_redirect_to_about_page(context):
 def step_redirect_to_login_page(context):
     context.page_object.current_page_should_be(
         expected_url=URLS["LOGIN_PAGE"]
+    )
+
+@then("I should be redirected to SauceLabs X page")
+def step_redirect_to_x(context):
+    context.page_object.page_in_new_tab_should_have_url(
+        locator=context.page_object.link_button_x,
+        expected_url=URLS["SOC_X_PAGE"]
+    )
+
+@then("I should be redirected to SauceLabs Facebook page")
+def step_redirect_to_fb(context):
+    context.page_object.page_in_new_tab_should_have_url(
+        locator=context.page_object.link_button_fb,
+        expected_url=URLS["SOC_FB_PAGE"]
+    )
+
+@then("I should be redirected to SauceLabs LinkedIn page")
+def step_redirect_to_li(context):
+    context.page_object.page_in_new_tab_should_have_url(
+        locator=context.page_object.link_button_li,
+        expected_url=URLS["SOC_LI_PAGE"]
     )
