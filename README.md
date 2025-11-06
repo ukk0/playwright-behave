@@ -62,7 +62,19 @@ Run a specific feature file:
 behave features/login.feature
 ```
 
-Additional test configuration options (browser, headless mode, slow motion, etc.) will be added later.
+By default, tests are configured to run in headless mode using Chromium browser and without delay (as defined in config.py)
+You can override these options from the command line:
+
+| Variable   | Description                                      | Default    |
+|------------|--------------------------------------------------|-----------|
+| `BROWSER`  | Browser to use (`chromium`, `firefox`, `webkit`) | `chromium` |
+| `HEADLESS` | Run in headless mode (`true` or `false`)        | `true`    |
+| `SLOW_MO`  | Slow motion delay in milliseconds (integer)     | `0`       |
+
+Example: Override defaults and run ```login.feature``` in headed Firefox, with a 300ms action delay:
+```bash
+BROWSER=firefox HEADLESS=false SLOW_MO=300 behave features/login.feature
+```
 
 ---
 
