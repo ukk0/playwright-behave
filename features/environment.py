@@ -1,10 +1,12 @@
 from utils.browser_factory import BrowserFactory
-from utils.config import HEADLESS
+from utils.config import *
 from utils.page_mapping import PAGE_OBJECTS
 
 
 def before_all(context):
-    factory = BrowserFactory(headless=HEADLESS)
+    factory = BrowserFactory(
+        browser_name=str(BROWSER).lower(), headless=bool(HEADLESS), slow_mo=int(SLOW_MO)
+    )
     context.page = factory.start_execution()
     context.browser_factory = factory
 

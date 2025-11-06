@@ -34,3 +34,12 @@ def empty_cart_script():
 
 def fill_cart_script():
     return "localStorage.setItem('cart-contents', '[0, 1, 2, 3, 4, 5]')"
+
+
+def str_to_bool(value: str) -> bool:
+    if str(value).strip().lower() == "true":
+        return True
+    elif str(value).strip().lower() == "false":
+        return False
+    else:
+        raise ValueError(f"Invalid boolean value: {value}. Must be 'true' or 'false'.")
