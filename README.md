@@ -1,8 +1,13 @@
 # SauceDemo E2E Tests with Playwright + Behave (BDD)
 
-This project demonstrates **Behavior-Driven Development (BDD)** for end-to-end testing of the [SauceDemo](https://www.saucedemo.com/) web application using **Playwright + Behave (Python)**.
+This project demonstrates **Behavior-Driven Development (BDD)** for end-to-end UI testing of the
+[SauceDemo](https://www.saucedemo.com/) website, using **Playwright + Behave (Python)**.  
 
-To serve mainly as a comparison to [my Playwright + pytest framework for SauceDemo](https://github.com/ukk0/saucedemo-playwright-pytest) and a learning opportunity, I recreated the suite using Behave to explore **BDD structure** and **human-readable feature files**.  
+While individual features are tested separately, the suite collectively ensures full application coverage across login, 
+shopping, and checkout flows.  
+
+To serve mainly as a comparison to [my Playwright + pytest framework for SauceDemo](https://github.com/ukk0/saucedemo-playwright-pytest) 
+and a learning opportunity, I recreated the suite using Behave to explore **BDD structure** and **human-readable feature files**.  
 Both projects target the same application but highlight **different frameworks and approaches** to automation and test design.
 
 ---
@@ -21,6 +26,7 @@ It features:
 
 ## Project structure
 
+saucedemo-playwright-behave/
 ├── features/ # Test scenarios per feature/page in Gherkin  
 │ ├── steps/ # Test step definitions  
 │ └── environment.py # Behave hooks (before_all, after_all, etc.)  
