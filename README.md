@@ -26,7 +26,7 @@ It features:
 
 ## Project structure
 
-saucedemo-playwright-behave/
+saucedemo-playwright-behave/  
 ├── features/ # Test scenarios per feature/page in Gherkin  
 │ ├── steps/ # Test step definitions  
 │ └── environment.py # Behave hooks (before_all, after_all, etc.)  
