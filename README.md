@@ -27,13 +27,15 @@ It features:
 ## Project structure
 
 saucedemo-playwright-behave/  
-├── features/ # Test scenarios per feature/page in Gherkin  
-│ ├── steps/ # Test step definitions  
-│ └── environment.py # Behave hooks (before_all, after_all, etc.)  
-├── pages/ # Page Object Models (POMs)  
-├── utils/ # Helper modules (browser factory, mappings etc.)  
+├── features/$~~~~~~~~~~~~~~~~~~~~~~~~~~$# Test scenarios per feature/page in Gherkin  
+│ ├── steps/$~~~~~~~~~~~~~~~~~~~~~~~~~~~$# Test step definitions  
+│ └── environment.py$~~~~~~~~~~~~~$# Behave hooks (before_all, after_all, etc.)  
+├── pages/$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$# Page Object Models (POMs)  
+├── utils/$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$# Helper modules (browser factory, mappings etc.)  
 ├── requirements.txt  
 └── .pre-commit-config.yaml  
+└── .github/workflows/playwright-behave-html.yml  
+
 
 ---
 
@@ -98,14 +100,18 @@ pre-commit run --all-files
 
 ---
 
-## Test reporting
+## Test reports and CI/CD
 
-(Coming soon. Framework and format TBD)
+This project uses behave-html-formatter for generating Behave formatted HTML test reports, available locally and in CI. 
+A simple GitHub Actions workflow (manual trigger) runs the test suite, produces the report, and uploads an artifact 
+kept for 1 day (workflow defined in .github/workflows/playwright-behave-html.yml).
 
----
+One example report (`example_behave_report.html`) can be found at project root.  
+To run tests locally with new report created:
 
-## CI/CD Integration
+```bash
+behave -f html -o reports/example_behave_report.html
+```
 
-(Coming soon. GitHub Actions pipeline will be added together with reporting)
-
-
+In CI, the report is triggered via Actions > 'Playwright behave-html' > Run workflow. The report can then be downloaded
+through the 'Upload report' step of the workflow.
