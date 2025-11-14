@@ -27,11 +27,11 @@ It features:
 ## Project structure
 
 saucedemo-playwright-behave/  
-├── features/$~~~~~~~~~~~~~~~~~~~~~~~~~~$# Test scenarios per feature/page in Gherkin  
-│ ├── steps/$~~~~~~~~~~~~~~~~~~~~~~~~~~~$# Test step definitions  
-│ └── environment.py$~~~~~~~~~~~~~$# Behave hooks (before_all, after_all, etc.)  
-├── pages/$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$# Page Object Models (POMs)  
-├── utils/$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$# Helper modules (browser factory, mappings etc.)  
+├── features/ # Test scenarios per feature/page in Gherkin  
+│ ├── steps/ # Test step definitions  
+│ └── environment.py # Behave hooks (before_all, after_all, etc.)  
+├── pages/ # Page Object Models (POMs)  
+├── utils/ # Helper modules (browser factory, mappings etc.)  
 ├── requirements.txt  
 └── .pre-commit-config.yaml  
 └── .github/workflows/playwright-behave-html.yml  
