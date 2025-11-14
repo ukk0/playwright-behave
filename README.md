@@ -106,11 +106,10 @@ This project uses behave-html-formatter for generating Behave formatted HTML tes
 A simple GitHub Actions workflow (manual trigger) runs the test suite, produces the report, and uploads an artifact 
 kept for 1 day (workflow defined in .github/workflows/playwright-behave-html.yml).
 
-One example report (`example_behave_report.html`) can be found at project root.  
 To run tests locally with new report created:
 
 ```bash
-behave -f html -o reports/example_behave_report.html
+behave -f html -o reports/behave_report.html
 ```
 
 In CI, the report is triggered via Actions > 'Playwright behave-html' > Run workflow. The report can then be downloaded
